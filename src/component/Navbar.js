@@ -3,10 +3,10 @@ import React from 'react'
 export default function Navbar() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div className="container-fluid container">
             <a className="navbar-brand" href="#">
-              Navbar
+              React-Api-Strap
             </a>
             <button
               className="navbar-toggler"
@@ -29,21 +29,6 @@ export default function Navbar() {
                 <li className="nav-item">
                   <a className="nav-link" href="#">
                     Features
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Pricing
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link disabled"
-                    href="#"
-                    tabindex="-1"
-                    aria-disabled="true"
-                  >
-                    Disabled
                   </a>
                 </li>
               </ul>
