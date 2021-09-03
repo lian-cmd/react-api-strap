@@ -26,9 +26,8 @@ export default class Content extends Component {
                   <div className="card-body">
                     <h5 className="card-title">{post.title}</h5>
                     <p className="card-text">{post.body}</p>
-                    <a href="#" className="btn btn-primary">
-                      more..
-                    </a>
+                    <button className="btn btn-danger me-3">Hapus</button>
+                    <button className="btn btn-warning">Edit</button>
                   </div>
                 </div>
               </div>
