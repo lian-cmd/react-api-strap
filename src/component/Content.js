@@ -20,6 +20,10 @@ export default class Content extends Component {
   });
 }
 
+  onClickChange = (event) => {
+    event.preventDefault();
+  }
+
   handleHapus = (id) => {
     console.log(id);
     axios.delete(`http://localhost:3004/posts/${id}`)
@@ -27,6 +31,19 @@ export default class Content extends Component {
       this.getPosApi()
     })
   };
+
+  handleChange = (event) => {
+    // console.log(e.target.name)
+    let formPostNew = { ...this.state.formPost }; //mencopy
+    // console.log(formPostNew[e.target.name]) //hasilnya title
+    formPostNew[event.target.name] = event.target.value;
+    // ambil namenya seperti title, body dll dan masukkan nilainya yang diketik
+    this.setState({
+      formPost: formPostNew
+    },()=>{
+       console.log(this.state.formPost);
+    })
+  }
   
   componentDidMount() {
     // fetch("https://jsonplaceholder.typicode.com/posts")
@@ -58,13 +75,25 @@ export default class Content extends Component {
                   <label htmlFor="title" className="form-label">
                     Title
                   </label>
-                  <input name="title" type="text" className="form-control" id="title" />
+                  <input
+                    name="title"
+                    onChange={this.handleChange}
+                    type="text"
+                    className="form-control"
+                    id="title"
+                  />
                   <label htmlFor="body" className="form-label">
                     Body
                   </label>
-                  <input name="body" type="text" className="form-control" id="body" />
+                  <input
+                    name="body"
+                    onChange={this.handleChange}
+                    type="text"
+                    className="form-control"
+                    id="body"
+                  />
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button onClick={this.onClickChange} type="submit" className="btn btn-primary">
                   Post
                 </button>
               </form>
