@@ -15,12 +15,13 @@ export default class Content extends Component {
       
     //   );
 
-    axios.get("https://jsonplaceholder.typicode.com/posts")
+    // axios.get("https://jsonplaceholder.typicode.com/posts")
+    axios.get("http://localhost:3004/posts")
       .then((result) => {
-        this.setState({
-        posts: result.data
-      })
-    })
+      this.setState({
+        posts: result.data,
+      });
+    });
 
   }
 
@@ -28,10 +29,10 @@ export default class Content extends Component {
     return (
       <Fragment>
         {
-          this.state.posts.map((post,index) => {
+          this.state.posts.map(post => {
             return (
-              <div key={index} className="container mt-5 ">
-                <div className="card">
+              <div key={post.id} className="container mt-5 ">
+                <div className="card" style={{width:500}}>
                   <div className="card-body">
                     <h5 className="card-title">{post.title}</h5>
                     <p className="card-text">{post.body}</p>
