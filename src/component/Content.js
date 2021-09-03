@@ -13,16 +13,30 @@ export default class Content extends Component {
   };
 
   getPosApi = () => {
-  axios.get("http://localhost:3004/posts").then((result) => {
-    this.setState({
-      posts: result.data,
+  axios
+    .get(`http://localhost:3004/posts?_sort=id&_order=desc`)
+    .then((result) => {
+      this.setState({
+        posts: result.data
+      });
     });
-  });
 }
 
-  onClickChange = (event) => {
-    event.preventDefault();
+postDataToApi = () => {
+  axios.post("http://localhost:3004/posts/", this.state.formPost)
+    .then((result) => {
+    console.log(result)
+    }, (error) => {
+      console.log(error)
+  })
   }
+  
+  handlePost = (event) => {
+    event.preventDefault();
+    // console.log(this.state.formPost)
+      this.postDataToApi();
+  }
+
 
   handleHapus = (id) => {
     console.log(id);
@@ -34,14 +48,17 @@ export default class Content extends Component {
 
   handleChange = (event) => {
     // console.log(e.target.name)
-    let formPostNew = { ...this.state.formPost }; //mencopy
+    let formPostNew = { ...this.state.formPost }; //mencopy isi formPost
     // console.log(formPostNew[e.target.name]) //hasilnya title
+    let timeStamp = new Date().getTime();
+    // console.log(timeStamp)
+    formPostNew['id'] = timeStamp;
     formPostNew[event.target.name] = event.target.value;
     // ambil namenya seperti title, body dll dan masukkan nilainya yang diketik
     this.setState({
       formPost: formPostNew
     },()=>{
-       console.log(this.state.formPost);
+      //  console.log(this.state.formPost);
     })
   }
   
@@ -93,7 +110,7 @@ export default class Content extends Component {
                     id="body"
                   />
                 </div>
-                <button onClick={this.onClickChange} type="submit" className="btn btn-primary">
+                <button onClick={this.handlePost} type="submit" className="btn btn-primary">
                   Post
                 </button>
               </form>
