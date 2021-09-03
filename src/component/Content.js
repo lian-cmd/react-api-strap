@@ -7,43 +7,45 @@ export default class Content extends Component {
     formPost: {
       userId: 1,
       id: 1,
-      title: '',
-      body:''
-    }
+      title: "",
+      body: "",
+    },
   };
 
   getPosApi = () => {
-  axios
-    .get(`http://localhost:3004/posts?_sort=id&_order=desc`)
-    .then((result) => {
-      this.setState({
-        posts: result.data
+    //menampilkan
+    axios
+      .get(`http://localhost:3004/posts?_sort=id&_order=desc`)
+      .then((result) => {
+        this.setState({
+          posts: result.data,
+        });
       });
-    });
-}
+  };
 
-postDataToApi = () => {
-  axios.post("http://localhost:3004/posts/", this.state.formPost)
-    .then((result) => {
-    console.log(result)
-    }, (error) => {
-      console.log(error)
-  })
-  }
-  
+  postDataToApi = () => {
+    axios.post("http://localhost:3004/posts/", this.state.formPost).then(
+      (result) => {
+        console.log(result);
+        this.getPosApi();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
   handlePost = (event) => {
     event.preventDefault();
     // console.log(this.state.formPost)
-      this.postDataToApi();
-  }
-
+    this.postDataToApi();
+  };
 
   handleHapus = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:3004/posts/${id}`)
-      .then((result) => {
-      this.getPosApi()
-    })
+    axios.delete(`http://localhost:3004/posts/${id}`).then((result) => {
+      this.getPosApi();
+    });
   };
 
   handleChange = (event) => {
@@ -52,16 +54,19 @@ postDataToApi = () => {
     // console.log(formPostNew[e.target.name]) //hasilnya title
     let timeStamp = new Date().getTime();
     // console.log(timeStamp)
-    formPostNew['id'] = timeStamp;
+    formPostNew["id"] = timeStamp;
     formPostNew[event.target.name] = event.target.value;
     // ambil namenya seperti title, body dll dan masukkan nilainya yang diketik
-    this.setState({
-      formPost: formPostNew
-    },()=>{
-      //  console.log(this.state.formPost);
-    })
-  }
-  
+    this.setState(
+      {
+        formPost: formPostNew,
+      },
+      () => {
+        //  console.log(this.state.formPost);
+      }
+    );
+  };
+
   componentDidMount() {
     // fetch("https://jsonplaceholder.typicode.com/posts")
     //   .then((response) => response.json())
@@ -110,7 +115,11 @@ postDataToApi = () => {
                     id="body"
                   />
                 </div>
-                <button onClick={this.handlePost} type="submit" className="btn btn-primary">
+                <button
+                  onClick={this.handlePost}
+                  type="submit"
+                  className="btn btn-primary"
+                >
                   Post
                 </button>
               </form>
