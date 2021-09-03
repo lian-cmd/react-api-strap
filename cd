@@ -1,0 +1,47 @@
+[33mcommit 2daf16dfc956e9e20556ffb982bca9fd25b09fc0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:56:03 2021 +0700
+
+    mengubah isi navbar sesuai kebutuhan
+
+[33mcommit 7bc8cc8d155a1b2da8f5be160437f46b74aa8e03[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:40:53 2021 +0700
+
+    menambahkan component navbar
+
+[33mcommit 7c23d55fd4993c16594c24ebefd14d0a93874be7[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:36:18 2021 +0700
+
+    menambahkan file jsconfig dan eslintrc
+
+[33mcommit 6f5b97f73f6ecff1ad0ae5bacd3077f5af4bab4f[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:30:39 2021 +0700
+
+    menambahkan folder component yang didalamnya ada file Navbar,Content,dan Footer
+
+[33mcommit f4a65ec108cb90e6ba15a29dd1dab9b84431f0c3[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:25:56 2021 +0700
+
+    menambahkan bootstrap
+
+[33mcommit 449a00bb4222bec69b106e5c05945a937ecca3fd[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:18:39 2021 +0700
+
+    mengubah isi file create-react-app jadi hello world
+
+[33mcommit 7d8d8ae255e0cf87f2aa39da5c59b4b90f0c9de0[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 11:15:02 2021 +0700
+
+    menghapus file-file default create-react-app
+
+[33mcommit 133197f99eb19850ea7b312a6f576f4fe10fc4e2[m
+Author: lian-cmd <lianabdiansyaht@gmail.com>
+Date:   Fri Sep 3 10:59:26 2021 +0700
+
+    Initialize project using Create React App
