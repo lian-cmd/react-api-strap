@@ -4,6 +4,12 @@ import axios from "axios";
 export default class Content extends Component {
   state = {
     posts: [],
+    formPost: {
+      userId: 1,
+      id: 1,
+      title: '',
+      body:''
+    }
   };
 
   getPosApi = () => {
@@ -44,6 +50,28 @@ export default class Content extends Component {
   render() {
     return (
       <Fragment>
+        <div className="container mt-4">
+          <div className="row">
+            <div className="col-md-4 card pb-2">
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="title" className="form-label">
+                    Title
+                  </label>
+                  <input name="title" type="text" className="form-control" id="title" />
+                  <label htmlFor="body" className="form-label">
+                    Body
+                  </label>
+                  <input name="body" type="text" className="form-control" id="body" />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Post
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
         {this.state.posts.map((post) => {
           return (
             <div key={post.id} className="container mt-5 ">
@@ -52,7 +80,7 @@ export default class Content extends Component {
                   <h5 className="card-title">{post.title}</h5>
                   <p className="card-text">{post.body}</p>
                   <button
-                    onClick={()=>this.handleHapus(post.id)}
+                    onClick={() => this.handleHapus(post.id)}
                     className="btn btn-danger me-3"
                   >
                     Hapus
