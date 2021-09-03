@@ -1,7 +1,9 @@
+import Navbar from "./component/Navbar";
+
 function App() {
   return (
     <div>
-      <p className="text-success">Hello world</p>
+      <Navbar/>
     </div>
   );
 }
