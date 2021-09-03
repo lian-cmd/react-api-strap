@@ -15,6 +15,13 @@ export default class Content extends Component {
       
     //   );
 
+    axios.get("https://jsonplaceholder.typicode.com/posts")
+      .then((result) => {
+        this.setState({
+        posts: result.data
+      })
+    })
+
   }
 
   render() {
