@@ -5,7 +5,7 @@ export default function Home() {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <p className="mt-5">Ini adalah halaman home</p>
+                    <p className="mt-5">Cari Video Youtube</p>
                 </div>
             </div>
         </div>
