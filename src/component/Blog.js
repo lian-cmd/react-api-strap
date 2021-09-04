@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
-export default class Content extends Component {
+export default class Blog extends Component {
   state = {
     posts: [],
     formPost: {
@@ -48,8 +48,8 @@ export default class Content extends Component {
     axios.put(`http://localhost:3004/posts/${this.state.formPost.id}`,this.state.formPost)
       .then((result) => {
       // console.log(result);
-        this.getPosApi();
-        this.setState({
+        this.getPosApi(); // tampilkan datanya lagi
+        this.setState({ //kembalikan jadi kosong formnya
           isUpdate: false,
           formPost: {
             userId: 1,
