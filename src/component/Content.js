@@ -10,6 +10,7 @@ export default class Content extends Component {
       title: "",
       body: "",
     },
+    isUpdate: false
   };
 
   getPosApi = () => {
@@ -28,6 +29,14 @@ export default class Content extends Component {
       (result) => {
         console.log(result);
         this.getPosApi();
+        this.setState({ //ketika telah berhasil di post maka isi form akan dikosongkan kembali
+          formPost: {
+            userId: 1,
+            id: 1,
+            title: "",
+            body: "",
+          }
+        })
       },
       (error) => {
         console.log(error);
@@ -35,10 +44,32 @@ export default class Content extends Component {
     );
   };
 
+  putDataToApi = () => {
+    axios.put(`http://localhost:3004/posts/${this.state.formPost.id}`,this.state.formPost)
+      .then((result) => {
+      // console.log(result);
+        this.getPosApi();
+        this.setState({
+          isUpdate: false,
+          formPost: {
+            userId: 1,
+            id: 1,
+            title: "",
+            body: "",
+          }
+        })
+        
+    })
+  }
+
   handlePost = (event) => {
     event.preventDefault();
     // console.log(this.state.formPost)
-    this.postDataToApi();
+    if (this.state.isUpdate) {
+      this.putDataToApi();
+    } else {
+      this.postDataToApi();
+    }
   };
 
   handleHapus = (id) => {
@@ -54,7 +85,9 @@ export default class Content extends Component {
     // console.log(formPostNew[e.target.name]) //hasilnya title
     let timeStamp = new Date().getTime();
     // console.log(timeStamp)
-    formPostNew["id"] = timeStamp;
+    if (!this.state.isUpdate) { // update bernilai benar
+      formPostNew["id"] = timeStamp;
+    }
     formPostNew[event.target.name] = event.target.value;
     // ambil namenya seperti title, body dll dan masukkan nilainya yang diketik
     this.setState(
@@ -70,7 +103,8 @@ export default class Content extends Component {
   handleEdit = (data) => {
     // console.log(data)
     this.setState({
-      formPost:data
+      formPost: data,
+      isUpdate:true
     })
   }
 
