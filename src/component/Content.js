@@ -67,6 +67,13 @@ export default class Content extends Component {
     );
   };
 
+  handleEdit = (data) => {
+    // console.log(data)
+    this.setState({
+      formPost:data
+    })
+  }
+
   componentDidMount() {
     // fetch("https://jsonplaceholder.typicode.com/posts")
     //   .then((response) => response.json())
@@ -100,6 +107,7 @@ export default class Content extends Component {
                   <input
                     name="title"
                     onChange={this.handleChange}
+                    value={this.state.formPost.title}
                     type="text"
                     className="form-control"
                     id="title"
@@ -110,6 +118,7 @@ export default class Content extends Component {
                   <input
                     name="body"
                     onChange={this.handleChange}
+                    value={this.state.formPost.body}
                     type="text"
                     className="form-control"
                     id="body"
@@ -140,7 +149,12 @@ export default class Content extends Component {
                   >
                     Hapus
                   </button>
-                  <button className="btn btn-warning">Edit</button>
+                  <button
+                    onClick={() => this.handleEdit(post)}
+                    className="btn btn-warning"
+                  >
+                    Edit
+                  </button>
                 </div>
               </div>
             </div>
