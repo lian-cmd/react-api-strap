@@ -127,6 +127,10 @@ export default class Blog extends Component {
     this.getPosApi();
   }
 
+  handleDetail = (id) => {
+    this.props.history.push(`/detail/${id}`)
+  }
+
   render() {
     return (
       <Fragment>
@@ -175,7 +179,7 @@ export default class Blog extends Component {
             <div key={post.id} className="container mt-5 ">
               <div className="card" style={{ width: 500 }}>
                 <div className="card-body">
-                  <h5 className="card-title">{post.title}</h5>
+                  <h5 onClick={()=>this.handleDetail(post.id)} className="card-title">{post.title}</h5>
                   <p className="card-text">{post.body}</p>
                   <button
                     onClick={() => this.handleHapus(post.id)}
